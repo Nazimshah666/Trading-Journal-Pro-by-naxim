@@ -1,0 +1,398 @@
+/* PWA Native App Experience Styles */
+
+/* Remove scrollbars for cleaner look */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: none;
+}
+
+/* Prevent overscroll bounce on iOS */
+body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Smooth transitions for premium feel */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Touch-friendly tap targets with GPU acceleration */
+button, a, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Prevent text selection on UI elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Safe area insets for notched devices */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-left {
+  padding-left: env(safe-area-inset-left);
+}
+
+.safe-area-right {
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Premium loading animation */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #1C2534;
+  border-top: 3px solid #D4AF37;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Splash screen styles */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1C2534 0%, #111827 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-logo {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.splash-text {
+  color: #D4AF37;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Premium button styles */
+.premium-button {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+  border: none;
+  border-radius: 12px;
+  color: #1C2534;
+  font-weight: 600;
+  padding: 12px 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  transition: all 0.3s ease;
+}
+
+.premium-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.premium-button:active {
+  transform: translateY(0);
+}
+
+/* Dark theme optimizations */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #111827;
+    color: #F9FAFB;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .premium-button {
+    border: 2px solid #D4AF37;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* PWA install prompt styles */
+.install-prompt {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #1C2534 0%, #2D3748 100%);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  z-index: 1000;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.install-prompt.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.install-prompt-text {
+  color: #F9FAFB;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.install-prompt-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.install-button {
+  flex: 1;
+  background: #D4AF37;
+  color: #1C2534;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dismiss-button {
+  background: transparent;
+  color: #9CA3AF;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+
+
+/* Additional Performance Optimizations */
+.performance-optimized {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gpu-layer {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* Optimize animations for 60fps */
+@keyframes optimizedPulse {
+  0%, 100% { 
+    transform: scale(1) translateZ(0); 
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.05) translateZ(0); 
+    opacity: 0.8;
+  }
+}
+
+.splash-logo {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+  animation: optimizedPulse 2s ease-in-out infinite;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimized loading spinner */
+@keyframes optimizedSpin {
+  0% { transform: rotate(0deg) translateZ(0); }
+  100% { transform: rotate(360deg) translateZ(0); }
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #1C2534;
+  border-top: 3px solid #D4AF37;
+  border-radius: 50%;
+  animation: optimizedSpin 1s linear infinite;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Fast fade transitions */
+.fast-fade-in {
+  animation: fastFadeIn 0.2s ease-out;
+}
+
+.fast-fade-out {
+  animation: fastFadeOut 0.2s ease-out;
+}
+
+@keyframes fastFadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px) translateZ(0); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) translateZ(0); 
+  }
+}
+
+@keyframes fastFadeOut {
+  from { 
+    opacity: 1; 
+    transform: translateY(0) translateZ(0); 
+  }
+  to { 
+    opacity: 0; 
+    transform: translateY(-10px) translateZ(0); 
+  }
+}
+
+/* Optimize install prompt animations */
+.install-prompt {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #1C2534 0%, #2D3748 100%);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  z-index: 1000;
+  transform: translateY(100px) translateZ(0);
+  opacity: 0;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  backface-visibility: hidden;
+}
+
+.install-prompt.show {
+  transform: translateY(0) translateZ(0);
+  opacity: 1;
+}
+
+/* Optimize button interactions */
+.install-button, .dismiss-button {
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.install-button:active, .dismiss-button:active {
+  transform: scale(0.98) translateZ(0);
+}
+
+/* Performance-optimized connection status */
+@keyframes optimizedSlideIn {
+  from {
+    transform: translateX(100px) translateZ(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) translateZ(0);
+    opacity: 1;
+  }
+}
+
+.connection-status {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  z-index: 10000;
+  backdrop-filter: blur(10px);
+  animation: optimizedSlideIn 0.2s ease;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .splash-logo {
+    animation: none;
+  }
+  
+  .loading-spinner {
+    animation: none;
+    border-top-color: transparent;
+  }
+}
+
